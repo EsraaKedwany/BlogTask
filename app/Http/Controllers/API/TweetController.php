@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tweet;
 
 class TweetController extends Controller
 {
@@ -25,7 +26,8 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tweet=Tweet::create($request->all());
+        return response()->json($tweet, 201);
     }
 
     /**
