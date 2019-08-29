@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/tweets','API\TweetController@store');
+Route::delete('/tweets/{tweet}','API\TweetController@destroy');
