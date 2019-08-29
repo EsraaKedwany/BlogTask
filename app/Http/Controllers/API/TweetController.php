@@ -60,8 +60,13 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tweet $tweet)
     {
-        //
+        $is_exist=Tweet::find($tweet->id);
+        if($is_exist){
+            $tweet->delete();
+            return response()->json(null, 204);
+        }
+        
     }
 }
