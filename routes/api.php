@@ -21,4 +21,5 @@ Route::post('/tweets','API\TweetController@store');
 Route::delete('/tweets/{tweet}','API\TweetController@destroy');
 
 Route::post('register', 'API\RegisterController@register');
+Route::post('login', 'API\LoginController@login');
 
