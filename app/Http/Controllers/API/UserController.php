@@ -36,5 +36,10 @@ class UserController extends Controller
             return response()->json("wrong id", 404);
         }
         
+        $follower=auth()->user();
+        $flag=$user->followers()->attach($follower);
+
+        return response()->json("follow successfully", 200);
+
     }
 }
