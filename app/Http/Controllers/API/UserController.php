@@ -27,4 +27,14 @@ class UserController extends Controller
         }
         return response()->json($user, 200);
     }
+
+    public function follow($user)
+    {
+        $user=User::find($user);
+        if($user==null)
+        {
+            return response()->json("wrong id", 404);
+        }
+        
+    }
 }

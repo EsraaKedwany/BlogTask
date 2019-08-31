@@ -25,3 +25,5 @@ Route::post('/login', 'API\LoginController@login');
 Route::get('/searchbyname/{name}', 'API\UserController@searchByName');
 Route::get('/searchbyemail/{email}', 'API\UserController@searchByEmail');
 
+Route::post('/follow/{user}', 'API\UserController@follow');
+
