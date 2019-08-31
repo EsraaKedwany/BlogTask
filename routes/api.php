@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/tweets','API\TweetController@store');
 Route::delete('/tweets/{tweet}','API\TweetController@destroy');
 
-Route::post('register', 'API\RegisterController@register');
-Route::post('login', 'API\LoginController@login');
+Route::post('/register', 'API\RegisterController@register');
+Route::post('/login', 'API\LoginController@login');
+Route::get('/searchbyname/{name}', 'API\UserController@searchByName');
+Route::get('/searchbyemail/{email}', 'API\UserController@searchByEmail');
 
