@@ -23,6 +23,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 // tweets routes
 Route::post('/tweets','API\TweetController@store');
 Route::delete('/tweets/{tweet}','API\TweetController@destroy');
+Route::get('/timeline','API\TweetController@user_time_line');
 
 //search/follow routes
 Route::get('/searchbyname/{name}', 'API\UserController@searchByName');
