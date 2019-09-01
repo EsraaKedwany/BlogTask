@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tweet;
 use App\Http\Requests\Tweets\StoreTweetRequest;
+use App\UserFollowers;
 
 class TweetController extends Controller
 {
@@ -67,6 +68,20 @@ class TweetController extends Controller
             $tweet->delete();
             return response()->json(null, 204);
         }
+    }
+
+    public function user_time_line()
+    {
+        // current user
+        $current_user=auth()->user();
         
+        //select user_id from user_followers where follower_id=current user
+        $followed_users=UserFollowers::select('user_id')->where('follower_id',$current_user->id)->get();
+
+        //tweets of followed users
+        $followed_tweets=Tweet::whereIn('user_id',$followed_users)->get();
+        
+        return response()->json($followed_tweets,200);
+
     }
 }
