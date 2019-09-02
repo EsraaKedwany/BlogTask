@@ -8,5 +8,5 @@ return [
     'no_res' => 'no result',
     'wrong_id' => 'wrong id',
     'follow' => 'follow successfully',
-
+    'unauthorized' => 'unauthorized user'
 ];

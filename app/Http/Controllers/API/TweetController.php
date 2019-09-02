@@ -66,12 +66,16 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tweet $tweet)
+    public function destroy($locale, Tweet $tweet)
     {
+        $current_user=auth()->user();
         $is_exist=Tweet::find($tweet->id);
         if($is_exist){
-            $tweet->delete();
-            return response()->json(null, 204);
+            if($is_exist->user_id===$current_user->id){
+                $tweet->delete();
+                return response()->json(null, 204);
+            }
+            return response()->json(trans('unauthorized'), 403);
         }
     }
 
