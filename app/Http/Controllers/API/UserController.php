@@ -8,7 +8,7 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function searchByName($name)
+    public function searchByName($locale, $name)
     {
         $users=User::where('name',$name)->get();
         if($users->first()==null)
@@ -18,7 +18,7 @@ class UserController extends Controller
         return response()->json($users, 200);
     }
 
-    public function searchByEmail($email)
+    public function searchByEmail($locale, $email)
     {
         $user=User::where('email',$email)->first();
         if($user==null)
@@ -28,7 +28,7 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
-    public function follow($user)
+    public function follow($locale, $user)
     {
         $user=User::find($user);
         if($user==null)
