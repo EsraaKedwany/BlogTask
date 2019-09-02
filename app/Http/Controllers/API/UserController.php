@@ -13,7 +13,7 @@ class UserController extends Controller
         $users=User::where('name',$name)->get();
         if($users->first()==null)
         {
-            return response()->json("no result", 404);
+            return response()->json(trans('messages.no_res'), 404);
         }
         return response()->json($users, 200);
     }
@@ -23,7 +23,7 @@ class UserController extends Controller
         $user=User::where('email',$email)->first();
         if($user==null)
         {
-            return response()->json("no result", 404);
+            return response()->json(trans('messages.no_res'), 404);
         }
         return response()->json($user, 200);
     }
@@ -33,13 +33,13 @@ class UserController extends Controller
         $user=User::find($user);
         if($user==null)
         {
-            return response()->json("wrong id", 404);
+            return response()->json(trans('messages.wrong_id'), 404);
         }
         
         $follower=auth()->user();
         $flag=$user->followers()->attach($follower);
 
-        return response()->json("follow successfully", 200);
+        return response()->json(trans('messages.follow'), 200);
 
     }
 }

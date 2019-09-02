@@ -27,7 +27,7 @@ class StoreTweetRequest extends FormRequest
     {
         return [
             'body' => 'required | max:140',
-            'user_id' => 'required | exists:users,id',
+            // 'user_id' => ' exists:users,id',
         ];
     }
 

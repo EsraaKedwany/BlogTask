@@ -28,7 +28,12 @@ class TweetController extends Controller
      */
     public function store(StoreTweetRequest $request)
     {
-        $tweet=Tweet::create($request->all());
+        // dd($request);
+        $current_user=auth()->user();
+        $tweet=Tweet::create([
+            'user_id' => $current_user->id,
+            'body' => $request->body,
+        ]);
         return response()->json($tweet, 201);
     }
 
@@ -79,7 +84,7 @@ class TweetController extends Controller
         $followed_users=UserFollowers::select('user_id')->where('follower_id',$current_user->id)->get();
 
         //tweets of followed users
-        $followed_tweets=Tweet::whereIn('user_id',$followed_users)->get();
+        $followed_tweets=Tweet::whereIn('user_id',$followed_users)->paginate(10);
         
         return response()->json($followed_tweets,200);
 

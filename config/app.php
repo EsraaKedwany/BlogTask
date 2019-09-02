@@ -232,4 +232,6 @@ return [
 
     ],
 
+    'supported_languages' => ['en' => 'English', 'ar' => 'Arabic'],
+
 ];
