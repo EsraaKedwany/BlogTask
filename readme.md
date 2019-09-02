@@ -1,3 +1,6 @@
+<p>API Documentation:<p>
+https://documenter.getpostman.com/view/6591168/SVfTM72d?version=latest
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
