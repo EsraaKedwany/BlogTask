@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Resources\UserResource;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
         {
             return response()->json(trans('messages.no_res'), 404);
         }
-        return response()->json($users, 200);
+        return response()->json(UserResource::collection($users), 200);
     }
 
     public function searchByEmail($locale, $email)
@@ -25,7 +26,7 @@ class UserController extends Controller
         {
             return response()->json(trans('messages.no_res'), 404);
         }
-        return response()->json($user, 200);
+        return response()->json(new UserResource ($user), 200);
     }
 
     public function follow($locale, $user)
